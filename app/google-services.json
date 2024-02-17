@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "537584350916",
+    "firebase_url": "https://video-games-shop-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "video-games-shop",
+    "storage_bucket": "video-games-shop.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:537584350916:android:1efdae47a09de0f874fb91",
+        "android_client_info": {
+          "package_name": "com.aleksandar.videogames"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAieQl51qIDasEJ_oxTJ9EfqJr86-vhGL8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:537584350916:android:aabc5473f771dd9b74fb91",
+        "android_client_info": {
+          "package_name": "com.example.videogamesstore"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAieQl51qIDasEJ_oxTJ9EfqJr86-vhGL8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

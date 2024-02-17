@@ -1,0 +1,24 @@
+<!--<resources xmlns:tools="http://schemas.android.com/tools">-->
+<!--    &lt;!&ndash; Base application theme. &ndash;&gt;-->
+<!--    <style name="Base.Theme.VideoGamesStore" parent="Theme.Material3.DayNight.NoActionBar">-->
+<!--        &lt;!&ndash; Customize your dark theme here. &ndash;&gt;-->
+<!--        &lt;!&ndash; <item name="colorPrimary">@color/my_dark_primary</item> &ndash;&gt;-->
+<!--    </style>-->
+<!--</resources>-->
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Base.Theme.VideoGamesStore" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <item name="colorPrimary">@color/blue</item>
+    </style>
+
+<!--    <style name="Theme.VideoGamesStore" parent="Base.Theme.VideoGamesStore" />-->
+
+<!--    <style name="NoActionBarTheme" parent="Theme.Material3.DayNight.NoActionBar">-->
+<!--        <item name="colorPrimary">@color/blue</item>-->
+<!--    </style>-->
+
+<!--    <style name="AppTheme.Button" parent="Theme.AppCompat.Light.NoActionBar">-->
+<!--        <item name="colorButtonNormal">@color/blue</item>-->
+<!--    </style>-->
+
+</resources>

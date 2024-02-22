@@ -32,17 +32,15 @@ public class OrderAdapter extends FirebaseRecyclerAdapter<Order, OrderAdapter.my
         holder.price.setText(String.valueOf(model.getPrice()));
         holder.qty.setText(String.valueOf(model.getQty()));
 
-        // Parse the date string into a Date object
         SimpleDateFormat inputFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.US);
         Date date;
         try {
             date = inputFormat.parse(model.getOrderDateTime());
         } catch (ParseException e) {
             e.printStackTrace();
-            return; // Handle the parse exception or return if unable to parse
+            return;
         }
 
-        // Format date and time
         SimpleDateFormat outputFormat = new SimpleDateFormat("MMM dd yyyy", Locale.getDefault());
         if (date != null) {
             String formattedDateTime = outputFormat.format(date);

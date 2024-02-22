@@ -26,7 +26,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="570dp"
         app:layout_constraintBottom_toTopOf="@+id/checkoutBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.218"
@@ -48,17 +48,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintVertical_bias="0.886" />
-
-    <TextView
-        android:id="@+id/totalTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Total: £0.00"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/checkoutBtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView"
-        app:layout_constraintVertical_bias="0.45" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

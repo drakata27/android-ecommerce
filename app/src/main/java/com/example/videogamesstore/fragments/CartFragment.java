@@ -73,18 +73,13 @@ public class CartFragment extends Fragment implements CartTotalListener {
         cartAdapter = new CartAdapter(options, this);
         binding.recyclerView.setAdapter(cartAdapter);
 
-        binding.totalTxt.postDelayed(() -> binding.totalTxt.setText("Total: £"
-                + String.format(Locale.UK, "%.2f", cartAdapter.getTotal())), 300);
-
         binding.checkoutBtn.setOnClickListener(v -> {
             if(user == null ) {
                 Toast.makeText(requireContext(), "Sign in to proceed", Toast.LENGTH_SHORT).show();
             } else {
                 if(cartAdapter.getTotal() == 0) {
                     Toast.makeText(requireContext(), "You don't have any items in your cart", Toast.LENGTH_SHORT).show();
-                    binding.totalTxt.setText("Total: £" + String.format(Locale.UK, "%.2f", cartAdapter.getTotal()));
                 } else {
-                    binding.totalTxt.setText("Total: £" + String.format(Locale.UK, "%.2f", cartAdapter.getTotal()));
                     showCheckout();
                 }
             }
@@ -187,8 +182,6 @@ public class CartFragment extends Fragment implements CartTotalListener {
                 }
             });
         }
-
-        binding.totalTxt.setText("Total: £0.00");
     }
 
     private void processOrder(String postCode) {
@@ -264,6 +257,5 @@ public class CartFragment extends Fragment implements CartTotalListener {
     @SuppressLint("SetTextI18n")
     @Override
     public void onCartTotalUpdated(double total) {
-        binding.totalTxt.setText("Total: £" + String.format(Locale.UK, "%.2f", total));
     }
 }

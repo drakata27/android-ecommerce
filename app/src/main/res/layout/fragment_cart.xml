@@ -39,7 +39,7 @@
         android:id="@+id/checkoutBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Proceed to Checkout"
+        android:text="Checkout"
         android:textSize="15sp"
         android:textColor="@color/white"
         android:background="@drawable/rounded_ui_button"

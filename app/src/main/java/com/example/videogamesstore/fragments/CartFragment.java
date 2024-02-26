@@ -84,6 +84,11 @@ public class CartFragment extends Fragment implements CartTotalListener {
                 }
             }
         });
+
+        binding.clearCartBtn.setOnClickListener(v -> {
+            clearCart();
+            Toast.makeText(getContext(), "Cart was cleared", Toast.LENGTH_LONG).show();
+        });
         return binding.getRoot();
     }
 

@@ -149,4 +149,8 @@ public class CartAdapter extends FirebaseRecyclerAdapter <Game, CartAdapter.myVi
     public double getTotal() {
         return total;
     }
+
+    public void setTotal(double newTotal) {
+        total = newTotal;
+    }
 }

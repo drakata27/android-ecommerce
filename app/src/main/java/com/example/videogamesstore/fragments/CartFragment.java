@@ -42,16 +42,14 @@ import java.util.Objects;
 
 public class CartFragment extends Fragment implements CartTotalListener {
 
-    private FragmentCartBinding binding;
     private CartAdapter cartAdapter;
     private FirebaseUser user;
     private String currentDateTime;
-
     @SuppressLint("SetTextI18n")
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        binding = FragmentCartBinding.inflate(inflater, container, false);
+        com.example.videogamesstore.databinding.FragmentCartBinding binding = FragmentCartBinding.inflate(inflater, container, false);
 
         FirebaseAuth auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
@@ -87,7 +85,7 @@ public class CartFragment extends Fragment implements CartTotalListener {
 
         binding.clearCartBtn.setOnClickListener(v -> {
             clearCart();
-            Toast.makeText(getContext(), "Cart was cleared", Toast.LENGTH_LONG).show();
+            cartAdapter.setTotal(0);
         });
         return binding.getRoot();
     }
@@ -121,11 +119,11 @@ public class CartFragment extends Fragment implements CartTotalListener {
     }
 
     private DialogPlus createCheckoutDialog() {
-        DialogPlus dialogPlus = DialogPlus.newDialog(getContext())
-                .setContentHolder(new ViewHolder(R.layout.checkout_popup))
-                .create();
+        DialogPlus dialogPlus = DialogPlus.newDialog(requireContext())
+                    .setContentHolder(new ViewHolder(R.layout.checkout_popup))
+                    .create();
 
-        // Calculate 2/3 of the screen height
+            // Calculate 2/3 of the screen height
         DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
         int screenHeight = displayMetrics.heightPixels;
         int dialogHeight = (int) (screenHeight * (2.0 / 3.0));
@@ -136,7 +134,6 @@ public class CartFragment extends Fragment implements CartTotalListener {
 
         contentView.setLayoutParams(layoutParams);
         dialogPlus.show();
-
         return dialogPlus;
     }
 
@@ -178,6 +175,7 @@ public class CartFragment extends Fragment implements CartTotalListener {
                     for (DataSnapshot cartItemSnapshot : dataSnapshot.getChildren()) {
                         cartItemSnapshot.getRef().removeValue();
                     }
+                    cartAdapter.setTotal(0);
                     Log.d("Clear cart","Cart items removed for the current user");
                 }
 
@@ -206,8 +204,12 @@ public class CartFragment extends Fragment implements CartTotalListener {
                     String name = cartItemSnapshot.child("name").getValue(String.class);
                     String platform = cartItemSnapshot.child("platform").getValue(String.class);
                     String imgurl = cartItemSnapshot.child("imgurl").getValue(String.class);
-                    int currQty = cartItemSnapshot.child("currQty").getValue(Integer.class);
-                    double price = cartItemSnapshot.child("price").getValue(Double.class);
+
+                    Integer currQtyObject = cartItemSnapshot.child("currQty").getValue(Integer.class);
+                    int currQty = currQtyObject != null ? currQtyObject : 0;
+
+                    Double currPriceObject = cartItemSnapshot.child("price").getValue(Double.class);
+                    double price = currPriceObject != null ? currPriceObject : 0;
 
                     Order order = new Order(userId, userEmail, gameId, name, currQty, price,
                             platform, postCode, currentDateTime, imgurl);
@@ -232,9 +234,12 @@ public class CartFragment extends Fragment implements CartTotalListener {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
-                    int totalQty = snapshot.child("qty").getValue(Integer.class);
+                    Integer totalQtyObject = snapshot.child("qty").getValue(Integer.class);
+                    int totalQty = totalQtyObject != null ? totalQtyObject : 0;
                     int newQty = totalQty - currQty;
+
                     snapshot.child("qty").getRef().setValue(newQty);
+
                 } else {
                     Log.d("updateQty", "Game with ID " + gameId + " not found");
                 }
